@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Hat</title>
+</head>
+<body>
+    <h1>Welcome to the Sorting Hat Ceremony!</h1>
+    <p id="sortingResult"></p>
+
+    <script>
+        // Prompt for the student's name
+        let studentName = prompt("Please enter your name:");
+
+        // Draw a random number between 1 and 4
+        let houseNumber = Math.floor(Math.random() * 4) + 1;
+
+        // Assign a house based on the random number
+        let house;
+        if (houseNumber === 1) {
+            house = "Gryffindor";
+        } else if (houseNumber === 2) {
+            house = "Slytherin";
+        } else if (houseNumber === 3) {
+            house = "Hufflepuff";
+        } else {
+            house = "Ravenclaw";
+        }
+
+        // Display the result on the page
+        document.getElementById("sortingResult").textContent = `${studentName}, you are ${house}!`;
+    </script>
+</body>
+</html>
