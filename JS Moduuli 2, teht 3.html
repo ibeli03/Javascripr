@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Names List</title>
+    <script>
+        function getDogNames() {
+            let dogNames = [];
+            for (let i = 0; i < 6; i++) {
+                let name = prompt(`Enter the name of dog ${i + 1}:`);
+                if (name) {
+                    dogNames.push(name);
+                } else {
+                    alert("Please enter a valid name.");
+                    i--;
+                }
+            }
+            dogNames.sort().reverse();
+            let ul = document.getElementById("dogNamesList");
+            ul.innerHTML = '';
+            for (let i = 0; i < dogNames.length; i++) {
+                let li = document.createElement("li");
+                li.textContent = dogNames[i];
+                ul.appendChild(li);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Dog Names List</h1>
+    <button onclick="getDogNames()">Enter Dog Names</button>
+    <ul id="dogNamesList"></ul>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participants List</title>
+    <script>
+        function getParticipants() {
+            let numParticipants = parseInt(prompt("Enter the number of participants:"));
+            if (isNaN(numParticipants) || numParticipants <= 0) {
+                alert("Please enter a valid number greater than 0.");
+                return;
+            }
+            let participants = [];
+            for (let i = 0; i < numParticipants; i++) {
+                let name = prompt(`Enter the name of participant ${i + 1}:`);
+                if (name) {
+                    participants.push(name);
+                } else {
+                    alert("Please enter a valid name.");
+                    i--;
+                }
+            }
+            participants.sort();
+            let ol = document.getElementById("participantList");
+            ol.innerHTML = '';
+            for (let i = 0; i < participants.length; i++) {
+                let li = document.createElement("li");
+                li.textContent = participants[i];
+                ol.appendChild(li);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Participants List</h1>
+    <button onclick="getParticipants()">Enter Participants</button>
+    <ol id="participantList"></ol>
+</body>
+</html>
+

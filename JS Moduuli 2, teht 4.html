@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Sorting</title>
+    <script>
+        function getNumbers() {
+            let numbers = [];
+            while (true) {
+                let num = parseInt(prompt("Enter a number (enter 0 to stop):"));
+                if (num === 0) {
+                    break;
+                }
+                numbers.push(num);
+            }
+            numbers.sort((a, b) => b - a);
+            console.log("Numbers from largest to smallest:");
+            for (let i = 0; i < numbers.length; i++) {
+                console.log(numbers[i]);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Number Sorting</h1>
+    <button onclick="getNumbers()">Enter Numbers</button>
+</body>
+</html>
