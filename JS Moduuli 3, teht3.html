@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>innerHTML with For Loop</title>
+</head>
+<body>
+  <ul id="target">
+  </ul>
+
+  <script>
+    const names = ["John", "Paul", "Jones"];
+    let html = "";
+
+    for(let i = 0; i < names.length; i++) {
+      html += `<li>${names[i]}</li>`;
+    }
+
+    document.getElementById("target").innerHTML = html;
+  </script>
+</body>
+</html>
