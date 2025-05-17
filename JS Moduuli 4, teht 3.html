@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TV Show Search</title>
+</head>
+<body>
+  <h1>Search for a TV Show</h1>
+  <form id="searchForm">
+    <input id="query" name="q" type="text" placeholder="Enter TV show name">
+    <input type="submit" value="Search">
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const value = document.getElementById('query').value;
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+
+      fetch(`https://api.tvmaze.com/search/shows?q=${encodeURIComponent(value)}`)
+        .then(res => res.json())
+        .then(data => {
+          data.forEach(tvShow => {
+            const show = tvShow.show;
+            const article = document.createElement('article');
+
+            const title = document.createElement('h2');
+            title.textContent = show.name;
+
+            const link = document.createElement('a');
+            link.href = show.url;
+            link.target = '_blank';
+            link.textContent = 'More details';
+
+            const image = document.createElement('img');
+            if (show.image?.medium) {
+              image.src = show.image.medium;
+              image.alt = show.name;
+            }
+
+            const summary = document.createElement('div');
+            summary.innerHTML = show.summary || '';
+
+            article.appendChild(title);
+            article.appendChild(link);
+            if (show.image?.medium) article.appendChild(image);
+            article.appendChild(summary);
+
+            resultsDiv.appendChild(article);
+          });
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    });
+  </script>
+</body>
+</html>
